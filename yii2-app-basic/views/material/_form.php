@@ -8,19 +8,9 @@ use yii\widgets\ActiveForm;
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<!-- <div class="material-form"> -->
 
-
-<?php $form = ActiveForm::begin([
-    'fieldConfig' => [
-        'template' => "
-                <div class='form-select'>
-                {input}
-                </div>
-            ",
-    ]
-]); ?>
-<?
+<?php $form = ActiveForm::begin(); ?>
+<?php
 $cat = \yii\helpers\ArrayHelper::map(\app\models\Category::find()->all(), 'id', 'name');
 
 $paramsCat = [
@@ -33,20 +23,16 @@ $paramsType = [
 ];
 ?>
 
-<?= $form->field($model, 'name', ['inputOptions' => ['class' => 'fas']])->textInput(['maxlength' => true])->textInput(['placeholder' => "Имя"])->label(false) ?>
+<?php echo $form->field($model, 'name')->textInput(['maxlength' => true])->textInput(['placeholder' => "Имя"])->label(false) ?>
 
-<?= $form->field($model, 'author', ['inputOptions' => ['class' => 'fas']])->textInput(['maxlength' => true])->textInput(['placeholder' => "Автор"])->label(false) ?>
+<?php echo $form->field($model, 'author')->textInput(['maxlength' => true])->textInput(['placeholder' => "Автор"])->label(false) ?>
 
-<?/*= $form->field($model, 'category_id')->textInput() */ ?>
+<?php echo $form->field($model, 'category_id')->dropDownList($cat, $paramsCat)->label(false) ?>
 
-<?= $form->field($model, 'category_id', ['inputOptions' => ['class' => 'fas']])->dropDownList($cat, $paramsCat)->label(false) ?>
-
-
-<?/*= $form->field($model, 'type_id')->textInput() */ ?>
-<?= $form->field($model, 'type_id', ['inputOptions' => ['class' => 'fas']])->dropDownList($type, $paramsType)->label(false) ?>
+<?php echo $form->field($model, 'type_id')->dropDownList($type, $paramsType)->label(false)?>
 
 
-<?= $form->field($model, 'description')->textarea(['rows' => 100,])->textarea(['placeholder' => "Описание"])->label(false) ?>
+<?php echo $form->field($model, 'description')->textarea(['rows' => 100,])->textarea(['placeholder' => "Описание"])->label(false) ?>
 
 
 <div class="form-group">

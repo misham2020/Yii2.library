@@ -11,10 +11,9 @@ $this->params['breadcrumbs'][] = ['label' => $model->name, 'url' => ['view', 'id
 $this->params['breadcrumbs'][] = 'Update';
 ?>
 <div class="material-update">
-
-    <h1><?= Html::encode($this->title) ?></h1>
-
-    <?= $this->render('_form', [
+<?php echo Html::a('На главную', ['index'], ['class' => 'btn btn-primary mb-4']) ?>
+    <h1><?php echo Html::encode($this->title) ?></h1>
+    <?php echo $this->render('_form', [
         'model' => $model,
     ]) ?>
 

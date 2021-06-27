@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="d577eb30-529d-4fc4-b734-534c5dac46b8" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/yii2-app-basic/assets/AppAsset.php" beforeDir="false" afterPath="$PROJECT_DIR$/yii2-app-basic/assets/AppAsset.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yii2-app-basic/controllers/MaterialController.php" beforeDir="false" afterPath="$PROJECT_DIR$/yii2-app-basic/controllers/MaterialController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yii2-app-basic/views/material/_search.php" beforeDir="false" afterPath="$PROJECT_DIR$/yii2-app-basic/views/material/_search.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yii2-app-basic/views/material/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/yii2-app-basic/views/material/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yii2-app-basic/web/css/site.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/yii2-app-basic/web/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/yii2-app-basic/web/css/style.css" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1vS6Qr1Gi2YHYwqb6DMY9HQ3qWv" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="d577eb30-529d-4fc4-b734-534c5dac46b8" name="Default Changelist" comment="" />
+      <created>1626543130642</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1626543130642</updated>
+      <workItem from="1626543133828" duration="139000" />
+    </task>
+    <servers />
+  </component>
+</project>

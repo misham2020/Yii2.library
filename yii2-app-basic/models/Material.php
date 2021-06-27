@@ -77,4 +77,5 @@ class Material extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Type::className(), ['id' => 'type_id']);
     }
+   
 }

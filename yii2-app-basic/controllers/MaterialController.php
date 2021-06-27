@@ -2,9 +2,12 @@
 
 namespace app\controllers;
 
+use app\models\Category;
 use Yii;
 use app\models\Material;
 use app\models\MaterialSearch;
+use app\models\Type;
+use yii\data\Pagination;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -23,7 +26,7 @@ class MaterialController extends Controller
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
-                    'delete' => ['POST'],
+                    'delete' => ['POST', 'GET'],
                 ],
             ],
         ];
@@ -37,10 +40,13 @@ class MaterialController extends Controller
     {
         $searchModel = new MaterialSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $model =  Material::find()->all();
+
 
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+            'model' => $model,
         ]);
     }
 
@@ -52,6 +58,7 @@ class MaterialController extends Controller
      */
     public function actionView($id)
     {
+
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
@@ -65,16 +72,28 @@ class MaterialController extends Controller
     public function actionCreate()
     {
         $model = new Material();
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
-        }
-
+        $models =  Material::find()->all();
+        $cat = new Category();
+        $cat = $cat::find()->all();
+        $type = new Type();
+        $type = $type::find()->all();
         return $this->render('create', [
-            'model' => $model,
+            'model' => $model, 'models' => $models, 'type' => $type, 'cat' => $cat
         ]);
     }
 
+    public function actionStore()
+    {
+        $model = new Material();
+        $request = Yii::$app->request;
+        $model->name = $request->post('name');
+        $model->author = $request->post('author');
+        $model->description = $request->post('description');
+        $model->category_id = $request->post('category');
+        $model->type_id = $request->post('type');
+        $model->save();
+        return $this->redirect(['index']);
+    }
     /**
      * Updates an existing Material model.
      * If update is successful, the browser will be redirected to the 'view' page.
@@ -105,7 +124,6 @@ class MaterialController extends Controller
     public function actionDelete($id)
     {
         $this->findModel($id)->delete();
-
         return $this->redirect(['index']);
     }
 
@@ -123,5 +141,25 @@ class MaterialController extends Controller
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');
+    }
+    public function actionSearhes()
+    {
+        $search = Yii::$app->request->get('search');
+        if (!$search) {
+            return $this->render('searches');
+        }
+        $query = Material::find();
+        $query->orFilterWhere(['like', 'name', $search])
+            ->orFilterWhere(['like', 'author', $search])
+            ->orFilterWhere(['like', 'description', $search])
+            ->orFilterWhere(['like', 'category_id', $search])
+            ->orFilterWhere(['like', 'type_id', $search])
+            ->orFilterWhere(['like', 'id', $search]);
+
+
+        $pages = new Pagination(['totalCount' => $query->count(), 'pageSize' => 4, 'forcePageParam' => false, 'pageSizeParam' => false]);
+        $model = $query->offset($pages->offset)->limit($pages->limit)->all();
+
+        return $this->render('searches', compact('model', 'pages', 'search'));
     }
 }

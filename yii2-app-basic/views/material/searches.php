@@ -9,21 +9,11 @@ use yii\helpers\Url;
 <div class="main-wrapper">
     <div class="content">
         <div class="container">
-            <h1 class="my-md-5 my-4">Материалы</h1>
+            <h1 class="my-md-5 my-4">Поиск</h1>
             <p>
         <?php echo Html::a('Добавить', ['create'], ['class' => 'btn btn-primary mb-4']) ?>
+        <?php echo Html::a('На главную', ['index'], ['class' => 'btn btn-primary mb-4']) ?>
     </p>
-            <div class="row">
-                <div class="col-md-8">
-                <form action="<?php echo Url::to(['material/searhes'])?>" method="GET">
-                        <div class="input-group mb-3">
-                            <input type="text" name="search" class="form-control" placeholder=""
-                                   aria-label="Example text with button addon" aria-describedby="button-addon1">
-                            <button class="btn btn-primary" type="submit" id="button-addon1">Искать</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
             <div class="clearfix"></div>
             <div class="table-responsive">
                 <table class="table">
@@ -37,9 +27,9 @@ use yii\helpers\Url;
                     </tr>
                     </thead>
                     <tbody>
-                      <?php foreach($model as $item) { ?>
+                      <?php  foreach($model as $item) { ?>
                     <tr>
-                        <td><a href="<?php echo \yii\helpers\Url::to(['material/view', 'id' => $item->id]) ?>"><?php echo $item->name?></a></td>
+                        <td><a href="<?php echo \yii\helpers\Url::to(['material/view', 'id' => $item->id]) ?>"><?=$item->name?></a></td>
                         <td><?php echo $item->author?></td>
                         <td><?php echo $item->category->name;?></td>
                         <td><?php echo $item->type->name?></td>
